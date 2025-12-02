@@ -1,0 +1,20 @@
+<div class="programmer-dashboard">
+
+  <h1>Bienvenido, {{ user?.displayName }}</h1>
+  <p class="subtitle">Panel del Programador</p>
+
+  <div class="cards">
+
+    <div class="card" (click)="go('/programmer/projects')">
+      <h2>Mis Proyectos</h2>
+      <p>Registrar, editar o eliminar tus proyectos</p>
+    </div>
+
+    <div class="card" (click)="go('/programmer/appointments')">
+      <h2>Asesorías</h2>
+      <p>Revisar y gestionar solicitudes de asesoría</p>
+    </div>
+
+  </div>
+
+</div>

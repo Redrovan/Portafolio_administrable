@@ -1,0 +1,26 @@
+<div class="container">
+
+  <h1>Agendar Asesoría</h1>
+  <p class="subtitle">Programador: {{ programmer?.displayName }}</p>
+
+  <form (ngSubmit)="send()">
+
+    <label>Fecha</label>
+    <input type="date" [(ngModel)]="appointment.date" name="date" required>
+
+    <label>Hora disponible</label>
+    <select [(ngModel)]="appointment.time" name="time" required>
+      <option value="">-- Seleccionar --</option>
+      <option *ngFor="let a of availability">
+        {{ a.dayOfWeek }} - {{ a.startTime }} a {{ a.endTime }}
+      </option>
+    </select>
+
+    <label>Motivo</label>
+    <textarea [(ngModel)]="appointment.reason" name="reason" required></textarea>
+
+    <button class="btn-send">Enviar Solicitud</button>
+
+  </form>
+
+</div>

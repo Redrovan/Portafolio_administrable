@@ -1,0 +1,27 @@
+<div class="container">
+
+  <h1>Programadores Registrados</h1>
+
+  <button class="new-btn" (click)="gotoCreate()">+ Nuevo Programador</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Foto</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Especialidad</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let p of programmers">
+        <td><img [src]="p.photoURL" class="avatar"></td>
+        <td>{{ p.displayName }}</td>
+        <td>{{ p.email }}</td>
+        <td>{{ p.speciality || '---' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

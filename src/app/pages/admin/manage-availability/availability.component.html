@@ -1,0 +1,43 @@
+<div class="container">
+
+  <h1>Disponibilidad de Programadores</h1>
+
+  <label>Seleccionar programador:</label>
+  <select [(ngModel)]="selectedProgrammer" (change)="loadAvailability()">
+    <option value="">-- Seleccionar --</option>
+    <option *ngFor="let p of programmers" [value]="p.uid">
+      {{ p.displayName }}
+    </option>
+  </select>
+
+  <div *ngIf="selectedProgrammer">
+
+    <h2>Registrar nueva disponibilidad</h2>
+
+    <div class="form-inline">
+      <select [(ngModel)]="newAvailability.dayOfWeek">
+        <option>Lunes</option>
+        <option>Martes</option>
+        <option>Miércoles</option>
+        <option>Jueves</option>
+        <option>Viernes</option>
+      </select>
+
+      <input type="time" [(ngModel)]="newAvailability.startTime">
+      <input type="time" [(ngModel)]="newAvailability.endTime">
+
+      <button (click)="saveAvailability()">Agregar</button>
+    </div>
+
+    <h2>Horarios Registrados</h2>
+
+    <ul>
+      <li *ngFor="let a of availabilityList">
+        {{ a.dayOfWeek }} — {{ a.startTime }} a {{ a.endTime }}
+
+        <button class="btn-delete" (click)="deleteAvailability(a.id)">Eliminar</button>
+      </li>
+    </ul>
+  </div>
+
+</div>

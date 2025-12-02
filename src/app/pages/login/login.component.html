@@ -1,0 +1,14 @@
+<div class="login-container">
+
+  <div class="login-card">
+    <h1>Portafolio de Servicios</h1>
+    <p>Inicia sesión con Google para continuar</p>
+
+    <button (click)="login()" [disabled]="loading">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" />
+      <span *ngIf="!loading">Ingresar con Google</span>
+      <span *ngIf="loading">Cargando...</span>
+    </button>
+  </div>
+
+</div>

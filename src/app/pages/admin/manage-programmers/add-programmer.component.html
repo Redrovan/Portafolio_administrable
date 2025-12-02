@@ -1,0 +1,35 @@
+<div class="container">
+
+  <h1>Registrar Nuevo Programador</h1>
+
+  <form (ngSubmit)="save()">
+
+    <label>Nombre completo</label>
+    <input type="text" [(ngModel)]="programmer.displayName" name="name" required>
+
+    <label>Email</label>
+    <input type="email" [(ngModel)]="programmer.email" name="email" required>
+
+    <label>Especialidad</label>
+    <input type="text" [(ngModel)]="programmer.speciality" name="speciality">
+
+    <label>Biografía</label>
+    <textarea [(ngModel)]="programmer.bio" name="bio"></textarea>
+
+    <label>Foto (URL)</label>
+    <input type="text" [(ngModel)]="programmer.photoURL" name="photo">
+
+    <label>GitHub</label>
+    <input type="text" [(ngModel)]="programmer.socialLinks.github" name="github">
+
+    <label>LinkedIn</label>
+    <input type="text" [(ngModel)]="programmer.socialLinks.linkedin" name="linkedin">
+
+    <label>Portafolio</label>
+    <input type="text" [(ngModel)]="programmer.socialLinks.portfolio" name="portfolio">
+
+    <button type="submit" class="btn-save">Guardar</button>
+
+  </form>
+
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+
+  <h1>Solicitudes de Asesoría</h1>
+
+  <div class="list">
+    <div class="card" *ngFor="let a of appointments">
+
+      <h3>{{ a.date }} - {{ a.time }}</h3>
+
+      <p><strong>Usuario:</strong> {{ a.userId }}</p>
+      <p><strong>Motivo:</strong> {{ a.reason }}</p>
+
+      <p class="status" [ngClass]="a.status">
+        Estado: {{ a.status }}
+      </p>
+
+      <div class="buttons" *ngIf="a.status === 'pendiente'">
+        <button class="approve" (click)="updateStatus(a, 'aprobada')">
+          Aprobar
+        </button>
+
+        <button class="reject" (click)="updateStatus(a, 'rechazada')">
+          Rechazar
+        </button>
+      </div>
+
+      <div *ngIf="a.status !== 'pendiente'" class="response">
+        <strong>Mensaje enviado:</strong>
+        <p>{{ a.responseMessage }}</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,46 @@
+<div class="portfolio">
+
+  <div class="header">
+
+    <img class="avatar" [src]="programmer?.photoURL">
+
+    <h1>{{ programmer?.displayName }}</h1>
+    <p class="speciality">{{ programmer?.speciality }}</p>
+    <p class="bio">{{ programmer?.bio }}</p>
+
+    <div class="social">
+      <a *ngIf="programmer?.socialLinks?.github" 
+         [href]="programmer.socialLinks.github" target="_blank">GitHub</a>
+      <a *ngIf="programmer?.socialLinks?.linkedin" 
+         [href]="programmer.socialLinks.linkedin" target="_blank">LinkedIn</a>
+      <a *ngIf="programmer?.socialLinks?.portfolio" 
+         [href]="programmer.socialLinks.portfolio" target="_blank">Portafolio</a>
+    </div>
+
+    <button class="btn-schedule" (click)="schedule()">
+      Agendar Asesoría
+    </button>
+
+  </div>
+
+  <!-- PROYECTOS ACADÉMICOS -->
+  <h2>Proyectos Académicos</h2>
+  <div class="project-list">
+    <div class="project" *ngFor="let p of academicProjects">
+      <h3>{{ p.name }}</h3>
+      <p>{{ p.description }}</p>
+      <p><strong>Tecnologías:</strong> {{ p.technologies.join(', ') }}</p>
+    </div>
+  </div>
+
+  <!-- PROYECTOS LABORALES -->
+  <h2>Proyectos Laborales</h2>
+  <div class="project-list">
+    <div class="project" *ngFor="let p of workProjects">
+      <h3>{{ p.name }}</h3>
+      <p>{{ p.description }}</p>
+      <p><strong>Tecnologías:</strong> {{ p.technologies.join(', ') }}</p>
+    </div>
+  </div>
+
+</div>

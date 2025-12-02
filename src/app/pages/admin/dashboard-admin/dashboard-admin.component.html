@@ -1,0 +1,20 @@
+<div class="admin-dashboard">
+
+  <h1>Panel del Administrador</h1>
+  <p class="subtitle">Gestiona usuarios programadores y disponibilidades</p>
+
+  <div class="cards">
+
+    <div class="card" (click)="go('/admin/programmers')">
+      <h2>Programadores</h2>
+      <p>Registrar, editar o eliminar programadores</p>
+    </div>
+
+    <div class="card" (click)="go('/admin/availability')">
+      <h2>Disponibilidad</h2>
+      <p>Administrar horarios de los programadores</p>
+    </div>
+
+  </div>
+
+</div>

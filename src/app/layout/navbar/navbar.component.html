@@ -1,0 +1,35 @@
+<nav class="navbar">
+
+  <div class="left">
+    <a routerLink="/" class="logo">PortafolioPro</a>
+  </div>
+
+  <div class="middle">
+    <a routerLink="/" routerLinkActive="active">Inicio</a>
+
+    <a *ngIf="user?.role === 'admin'"
+       routerLink="/admin/dashboard"
+       routerLinkActive="active">Admin</a>
+
+    <a *ngIf="user?.role === 'programmer'"
+       routerLink="/programmer/dashboard"
+       routerLinkActive="active">Programador</a>
+  </div>
+
+  <div class="right">
+    <ng-container *ngIf="user; else noUser">
+
+      <img class="avatar" [src]="user.photoURL">
+
+      <span class="name">{{ user.displayName }}</span>
+
+      <button class="btn-logout" (click)="logout()">Salir</button>
+
+    </ng-container>
+
+    <ng-template #noUser>
+      <button routerLink="/login" class="btn-login">Ingresar</button>
+    </ng-template>
+  </div>
+
+</nav>

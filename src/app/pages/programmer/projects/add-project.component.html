@@ -1,0 +1,40 @@
+<div class="container">
+
+  <h1>Nuevo Proyecto</h1>
+
+  <form (ngSubmit)="save()">
+
+    <label>Tipo</label>
+    <select [(ngModel)]="project.type" name="type">
+      <option value="academico">Académico</option>
+      <option value="laboral">Laboral</option>
+    </select>
+
+    <label>Nombre del Proyecto</label>
+    <input type="text" [(ngModel)]="project.name" name="name" required>
+
+    <label>Descripción</label>
+    <textarea [(ngModel)]="project.description" name="description"></textarea>
+
+    <label>Participación</label>
+    <select [(ngModel)]="project.participation" name="participation">
+      <option value="frontend">Frontend</option>
+      <option value="backend">Backend</option>
+      <option value="fullstack">Fullstack</option>
+      <option value="database">Base de Datos</option>
+    </select>
+
+    <label>Tecnologías (separadas por coma)</label>
+    <input type="text" [(ngModel)]="project.technologies" name="tech">
+
+    <label>Repositorio (URL)</label>
+    <input type="text" [(ngModel)]="project.repoUrl" name="repo">
+
+    <label>Demo (URL)</label>
+    <input type="text" [(ngModel)]="project.demoUrl" name="demo">
+
+    <button class="btn-save">Guardar</button>
+
+  </form>
+
+</div>

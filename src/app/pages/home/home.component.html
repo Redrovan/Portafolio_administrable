@@ -1,0 +1,18 @@
+<div class="home-container">
+  <h2>Programadores Disponibles</h2>
+  <p>Explora portafolios y agenda asesorías personalizadas</p>
+
+  <div class="cards">
+    <div class="card" *ngFor="let p of programmers">
+      <img [src]="p.photoUrl" class="avatar">
+
+      <h3>{{ p.name }}</h3>
+
+      <p class="specialty">
+        {{ p.specialty || 'Especialidad no definida' }}
+      </p>
+
+      <button class="btn" (click)="viewPortfolio(p)">Ver Portafolio</button>
+    </div>
+  </div>
+</div>
