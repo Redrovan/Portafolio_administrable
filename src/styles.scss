@@ -66,3 +66,55 @@ input, select, textarea {
 input:focus, select:focus, textarea:focus {
   outline: 2px solid #4dabf7;
 }
+
+/* ------------------------ */
+/* MENSAJES DE ESTADO       */
+/* ------------------------ */
+
+.msg {
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.msg-success {
+  background: rgba(12, 166, 120, 0.20);
+  border: 1px solid #0ca678;
+  color: #0ca678;
+}
+
+.msg-warning {
+  background: rgba(245, 159, 0, 0.20);
+  border: 1px solid #f59f00;
+  color: #f59f00;
+}
+
+.msg-error {
+  background: rgba(214, 51, 108, 0.20);
+  border: 1px solid #d6336c;
+  color: #d6336c;
+}
+
+.msg-info {
+  background: rgba(29, 155, 240, 0.20);
+  border: 1px solid #1c7ed6;
+  color: #1c7ed6;
+}
+
+.btn-back {
+  display: inline-block;
+  margin-bottom: 15px;
+  background: transparent;
+  color: #4dabf7;
+  border: 1px solid #4dabf7;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-back:hover {
+  background: #4dabf7;
+  color: #fff;
+}
