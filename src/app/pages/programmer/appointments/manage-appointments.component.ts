@@ -114,7 +114,7 @@ private buildRejectedEmailHtml(a: any): string {
   <div style="font-family:Arial;padding:20px;background:#f5f5f5;color:#333;">
     <div style="background:#fff;padding:20px;border-radius:10px;">
       
-      <h2 style="color:#ef4444;">Asesoría Rechazada ✖</h2>
+      <h2 style="color:#ef4444;">Asesoría Rechazada </h2>
 
       <p>Hola, lamentablemente tu asesoría ha sido
         <strong style="color:#ef4444;">rechazada</strong>.
@@ -135,7 +135,7 @@ private buildRejectedEmailHtml(a: any): string {
 }
 
 private buildApprovedWhatsapp(a: any): string {
-  return `¡Hola! Tu asesoría ha sido APROBADA ✔
+  return `¡Hola! Tu asesoría ha sido APROBADA 
 
  Fecha: ${a.date}
  Hora: ${a.time}
@@ -145,7 +145,7 @@ private buildApprovedWhatsapp(a: any): string {
 }
 
 private buildRejectedWhatsapp(a: any): string {
-  return `Hola, tu asesoría ha sido RECHAZADA ✖
+  return `Hola, tu asesoría ha sido RECHAZADA 
 
 Motivo: No disponible en la fecha/hora solicitada.
 

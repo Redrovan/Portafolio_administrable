@@ -1,0 +1,17 @@
+<button class="back-btn" routerLink="/admin/users">← Regresar</button>
+
+<h1>Editar Usuario</h1>
+
+<div *ngIf="user" class="form-container">
+
+  <label>Nombre</label>
+  <input [(ngModel)]="user.displayName">
+
+  <label>Email</label>
+  <input [(ngModel)]="user.email">
+
+  <label>Foto URL</label>
+  <input [(ngModel)]="user.photoURL">
+
+  <button class="btn-primary" (click)="save()">Guardar Cambios</button>
+</div>

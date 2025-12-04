@@ -1,0 +1,21 @@
+<button class="back-btn" routerLink="/admin/programmers">← Regresar</button>
+
+<h1>Editar Programador</h1>
+
+<div *ngIf="programmer" class="form-container">
+
+  <label>Nombre</label>
+  <input type="text" [(ngModel)]="programmer.displayName">
+
+  <label>Email</label>
+  <input type="email" [(ngModel)]="programmer.email">
+
+  <label>Especialidad</label>
+  <input type="text" [(ngModel)]="programmer.speciality">
+
+  <label>Foto (URL)</label>
+  <input type="text" [(ngModel)]="programmer.photoURL">
+
+  <button class="btn-primary" (click)="save()">Guardar Cambios</button>
+
+</div>

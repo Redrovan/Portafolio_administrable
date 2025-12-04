@@ -1,0 +1,31 @@
+<button class="back-btn" routerLink="/programmer/projects">← Regresar</button>
+
+<h1>Editar Proyecto</h1>
+
+<div *ngIf="project" class="form-container">
+
+  <label>Nombre</label>
+  <input [(ngModel)]="project.name">
+
+  <label>Descripción</label>
+  <input [(ngModel)]="project.description">
+
+  <label>Participación</label>
+  <select [(ngModel)]="project.participation">
+    <option value="frontend">Frontend</option>
+    <option value="backend">Backend</option>
+    <option value="fullstack">Fullstack</option>
+    <option value="database">Database</option>
+  </select>
+
+  <label>Tecnologías (separadas por coma)</label>
+  <input [(ngModel)]="project.technologies">
+
+  <label>Repo URL</label>
+  <input [(ngModel)]="project.repoUrl">
+
+  <label>Demo URL</label>
+  <input [(ngModel)]="project.demoUrl">
+
+  <button class="btn-primary" (click)="save()">Guardar Cambios</button>
+</div>

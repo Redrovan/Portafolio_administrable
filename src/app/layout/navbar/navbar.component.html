@@ -5,6 +5,8 @@
   </div>
 
   <div class="middle">
+
+    <!-- INICIO -->
     <a routerLink="/" routerLinkActive="active">Inicio</a>
 
     <!-- SOLO ADMIN -->
@@ -19,13 +21,13 @@
 
     <!-- SOLO USER -->
     <a *ngIf="user?.role === 'user'"
-       routerLink="/"
+       routerLink="/explorar"
        routerLinkActive="active">Explorar</a>
+
   </div>
 
   <div class="right">
 
-    <!-- SI ESTÁ LOGUEADO -->
     <ng-container *ngIf="user; else noUser">
 
       <img class="avatar" [src]="user.photoURL" alt="Foto">
@@ -36,7 +38,6 @@
 
     </ng-container>
 
-    <!-- SI NO ESTÁ LOGUEADO -->
     <ng-template #noUser>
       <button routerLink="/login" class="btn-primary">Ingresar</button>
     </ng-template>

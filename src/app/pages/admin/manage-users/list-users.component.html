@@ -1,0 +1,35 @@
+<button class="back-btn" routerLink="/admin/dashboard">← Regresar</button>
+
+<h1>Usuarios Registrados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Foto</th>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let u of users">
+      <td><img [src]="u.photoURL" class="avatar"></td>
+      <td>{{ u.displayName }}</td>
+      <td>{{ u.email }}</td>
+
+      <td>
+        <button class="btn-secondary" (click)="edit(u.uid)">Editar</button>
+        <button class="btn-danger" (click)="remove(u.uid)">Eliminar</button>
+
+        <button class="btn-primary" (click)="promote(u.uid, 'programmer')">
+          Hacer Programador
+        </button>
+
+        <button class="btn-warning" (click)="promote(u.uid, 'admin')">
+          Hacer Admin
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

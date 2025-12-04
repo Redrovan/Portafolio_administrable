@@ -11,15 +11,31 @@
       <th>Nombre</th>
       <th>Email</th>
       <th>Especialidad</th>
+      <th>Acciones</th>
     </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let p of programmers">
-      <td><img [src]="p.photoURL" class="avatar"></td>
+      <td>
+        <img [src]="p.photoURL || 'assets/no-photo.png'" class="avatar">
+      </td>
+
       <td>{{ p.displayName }}</td>
       <td>{{ p.email }}</td>
       <td>{{ p.speciality || '---' }}</td>
+
+      <td>
+  <button class="btn-secondary"
+    [routerLink]="['/admin/programmers/edit', p.uid]">
+    Editar
+  </button>
+
+  <button class="btn-danger" (click)="delete(p.uid)">
+    Eliminar
+  </button>
+</td>
+
     </tr>
   </tbody>
 </table>
