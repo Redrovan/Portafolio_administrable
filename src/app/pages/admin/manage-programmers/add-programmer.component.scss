@@ -1,37 +1,25 @@
-.container {
-  padding: 20px;
+h1 {
+  margin-bottom: 20px;
+}
 
-  h1 {
-    margin-bottom: 20px;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  background: var(--color-light);
+  padding: 20px;
+  border-radius: 14px;
+
+  label {
+    font-weight: 600;
   }
 
-  form {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    label {
-      font-weight: bold;
-    }
-
-    input, textarea {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      width: 100%;
-    }
-
-    .btn-save {
-      margin-top: 10px;
-      background: #0ca678;
-      border: none;
-      padding: 12px;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-    }
+  input, textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background: #1e293b;
+    color: white;
   }
 }

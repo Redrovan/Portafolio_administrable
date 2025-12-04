@@ -1,47 +1,55 @@
-// src/app/services/auth.service.ts
-
 import { Injectable } from '@angular/core';
-import { Auth, GoogleAuthProvider, signInWithPopup, signOut, user } from '@angular/fire/auth';
-import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
-import { AppUser } from '../models/user.model';
-import { docData } from 'rxfire/firestore';
-import { Observable, of, switchMap } from 'rxjs';
+import { Auth, GoogleAuthProvider, signInWithPopup, signOut } from '@angular/fire/auth';
+import { Firestore, doc, setDoc, onSnapshot } from '@angular/fire/firestore';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  user$: Observable<AppUser | null>;
 
-  constructor(private auth: Auth, private db: Firestore) {
-    this.user$ = user(this.auth).pipe(
-      switchMap((u) => {
-        if (!u) return of(null);
-        const ref = doc(this.db, 'users', u.uid);
-        return docData(ref, { idField: 'uid' }) as Observable<AppUser>;
-      })
-    );
+  private userSubject = new BehaviorSubject<any>(null);
+  user$ = this.userSubject.asObservable();
+
+  constructor(
+    private auth: Auth,
+    private firestore: Firestore
+  ) {
+    this.listenAuthState();
   }
 
+  // Detecta usuario logueado en tiempo real
+  private listenAuthState() {
+    this.auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const ref = doc(this.firestore, 'users', user.uid);
+
+        onSnapshot(ref, snap => {
+          this.userSubject.next(snap.data());
+        });
+      } else {
+        this.userSubject.next(null);
+      }
+    });
+  }
+
+  // Login con Google
   async loginWithGoogle() {
     const provider = new GoogleAuthProvider();
-    const cred = await signInWithPopup(this.auth, provider);
-    const u = cred.user;
+    const result = await signInWithPopup(this.auth, provider);
 
-    const ref = doc(this.db, 'users', u.uid);
-    const snap = await getDoc(ref);
+    const user = result.user;
 
-    if (!snap.exists()) {
-      const newUser: AppUser = {
-        uid: u.uid,
-        displayName: u.displayName || 'Sin nombre',
-        email: u.email || '',
-        photoURL: u.photoURL || '',
-        role: 'user',
-      };
+    const userRef = doc(this.firestore, 'users', user.uid);
 
-      await setDoc(ref, newUser);
-    }
+    await setDoc(userRef, {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      role: 'user' 
+    }, { merge: true });
   }
 
+  // Logout
   logout() {
     return signOut(this.auth);
   }

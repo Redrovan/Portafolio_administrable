@@ -7,29 +7,40 @@
   <div class="middle">
     <a routerLink="/" routerLinkActive="active">Inicio</a>
 
+    <!-- SOLO ADMIN -->
     <a *ngIf="user?.role === 'admin'"
        routerLink="/admin/dashboard"
-       routerLinkActive="active">Admin</a>
+       routerLinkActive="active">Administrador</a>
 
+    <!-- SOLO PROGRAMADOR -->
     <a *ngIf="user?.role === 'programmer'"
        routerLink="/programmer/dashboard"
        routerLinkActive="active">Programador</a>
+
+    <!-- SOLO USER -->
+    <a *ngIf="user?.role === 'user'"
+       routerLink="/"
+       routerLinkActive="active">Explorar</a>
   </div>
 
   <div class="right">
+
+    <!-- SI ESTÁ LOGUEADO -->
     <ng-container *ngIf="user; else noUser">
 
-      <img class="avatar" [src]="user.photoURL">
+      <img class="avatar" [src]="user.photoURL" alt="Foto">
 
       <span class="name">{{ user.displayName }}</span>
 
-      <button class="btn-logout" (click)="logout()">Salir</button>
+      <button class="btn-danger logout-btn" (click)="logout()">Salir</button>
 
     </ng-container>
 
+    <!-- SI NO ESTÁ LOGUEADO -->
     <ng-template #noUser>
-      <button routerLink="/login" class="btn-login">Ingresar</button>
+      <button routerLink="/login" class="btn-primary">Ingresar</button>
     </ng-template>
+
   </div>
 
 </nav>

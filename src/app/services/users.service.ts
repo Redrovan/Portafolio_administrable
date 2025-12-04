@@ -1,36 +1,37 @@
-// src/app/services/users.service.ts
-
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, updateDoc, deleteDoc, doc } from '@angular/fire/firestore';
-import { collectionData } from 'rxfire/firestore';
-import { AppUser } from '../models/user.model';
+import { Firestore, collection, collectionData, doc, setDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
-  private ref;
 
-  constructor(private db: Firestore) {
-    this.ref = collection(this.db, 'users');
+  constructor(private firestore: Firestore) {}
+
+  // Obtener todos los usuarios
+  getUsers(): Observable<any[]> {
+    const ref = collection(this.firestore, 'users');
+    return collectionData(ref, { idField: 'uid' }) as Observable<any[]>;
   }
 
-  getAllUsers(): Observable<AppUser[]> {
-    return collectionData(this.ref, { idField: 'uid' }) as Observable<AppUser[]>;
+  // Obtener programadores
+  getProgrammers(): Observable<any[]> {
+    const ref = collection(this.firestore, 'users');
+    return collectionData(ref, { idField: 'uid' }) as Observable<any[]>;
   }
 
-  getProgrammers(): Observable<AppUser[]> {
-    return collectionData(this.ref, { idField: 'uid' }) as Observable<AppUser[]>; // filtro se hará en componente
+  // Crear programador
+  createProgrammer(data: any) {
+    const ref = doc(this.firestore, 'users', data.email);
+    return setDoc(ref, {
+      ...data,
+      uid: data.email,
+      role: 'programmer'
+    });
   }
 
-  createProgrammer(data: Partial<AppUser>) {
-    return addDoc(this.ref, { ...data, role: 'programmer' });
-  }
-
-  updateUser(id: string, data: Partial<AppUser>) {
-    return updateDoc(doc(this.db, 'users', id), data);
-  }
-
-  deleteUser(id: string) {
-    return deleteDoc(doc(this.db, 'users', id));
+  // Asignar rol (admin manual)
+  setRole(uid: string, role: string) {
+    const ref = doc(this.firestore, 'users', uid);
+    return setDoc(ref, { role }, { merge: true });
   }
 }

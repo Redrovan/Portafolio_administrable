@@ -1,18 +1,19 @@
-<div class="home-container">
-  <h2>Programadores Disponibles</h2>
-  <p>Explora portafolios y agenda asesorías personalizadas</p>
+<div class="header">
+  <h1>Portafolio de Servicios</h1>
+  <p class="subtitle">Conecta con programadores profesionales y agenda asesorías personalizadas</p>
+</div>
 
-  <div class="cards">
-    <div class="card" *ngFor="let p of programmers">
-      <img [src]="p.photoUrl" class="avatar">
+<h2>Programadores Disponibles</h2>
 
-      <h3>{{ p.name }}</h3>
+<div class="cards">
+  <div class="card-default programmer" *ngFor="let p of programmers">
+    <img class="avatar" [src]="p.photoURL">
 
-      <p class="specialty">
-        {{ p.specialty || 'Especialidad no definida' }}
-      </p>
+    <h3>{{ p.displayName }}</h3>
+    <p class="speciality">{{ p.speciality }}</p>
 
-      <button class="btn" (click)="viewPortfolio(p)">Ver Portafolio</button>
-    </div>
+    <button class="btn-primary" [routerLink]="['/portfolio', p.uid]">
+      Ver Portafolio
+    </button>
   </div>
 </div>

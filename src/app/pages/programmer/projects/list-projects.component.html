@@ -1,22 +1,22 @@
-<div class="container">
+<button class="back-btn" routerLink="/programmer/dashboard">← Regresar</button>
 
-  <h1>Mis Proyectos</h1>
+<h1>Mis Proyectos</h1>
 
-  <button (click)="newProject()" class="btn-new">
-    + Nuevo Proyecto
-  </button>
+<button class="btn-primary" (click)="newProject()">+ Nuevo Proyecto</button>
 
-  <div class="projects-list">
-    <div class="project" *ngFor="let p of projects">
-      <h3>{{ p.name }}</h3>
-      <p class="type">{{ p.type | uppercase }}</p>
-      <p class="desc">{{ p.description }}</p>
-      <p><strong>Tecnologías:</strong> {{ p.technologies.join(', ') }}</p>
+<div class="projects">
 
-      <div class="links">
-        <a *ngIf="p.repoUrl" [href]="p.repoUrl" target="_blank">Repo</a>
-        <a *ngIf="p.demoUrl" [href]="p.demoUrl" target="_blank">Demo</a>
-      </div>
+  <div class="card-default project" *ngFor="let p of projects">
+    <h3>{{ p.name }}</h3>
+    <p class="type">{{ p.type | uppercase }}</p>
+
+    <p class="desc">{{ p.description }}</p>
+
+    <p><strong>Tecnologías:</strong> {{ p.technologies.join(', ') }}</p>
+
+    <div class="links">
+      <a *ngIf="p.repoUrl" [href]="p.repoUrl" target="_blank">Repositorio</a>
+      <a *ngIf="p.demoUrl" [href]="p.demoUrl" target="_blank">Demo</a>
     </div>
   </div>
 

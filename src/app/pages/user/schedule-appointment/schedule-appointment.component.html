@@ -1,26 +1,24 @@
-<div class="container">
+<button class="back-btn" [routerLink]="['/portfolio', programmerId]">← Regresar</button>
 
-  <h1>Agendar Asesoría</h1>
-  <p class="subtitle">Programador: {{ programmer?.displayName }}</p>
+<h1>Agendar Asesoría</h1>
+<p class="subtitle">Programador: {{ programmer?.displayName }}</p>
 
-  <form (ngSubmit)="send()">
+<form (ngSubmit)="send()">
 
-    <label>Fecha</label>
-    <input type="date" [(ngModel)]="appointment.date" name="date" required>
+  <label>Fecha</label>
+  <input type="date" [(ngModel)]="appointment.date" name="date" required>
 
-    <label>Hora disponible</label>
-    <select [(ngModel)]="appointment.time" name="time" required>
-      <option value="">-- Seleccionar --</option>
-      <option *ngFor="let a of availability">
-        {{ a.dayOfWeek }} - {{ a.startTime }} a {{ a.endTime }}
-      </option>
-    </select>
+  <label>Hora Disponible</label>
+  <select [(ngModel)]="appointment.time" name="time" required>
+    <option value="">-- Seleccionar --</option>
+    <option *ngFor="let a of availability">
+      {{ a.dayOfWeek }} - {{ a.startTime }} a {{ a.endTime }}
+    </option>
+  </select>
 
-    <label>Motivo</label>
-    <textarea [(ngModel)]="appointment.reason" name="reason" required></textarea>
+  <label>Motivo</label>
+  <textarea [(ngModel)]="appointment.reason" name="reason" required></textarea>
 
-    <button class="btn-send">Enviar Solicitud</button>
+  <button class="btn-primary" type="submit">Enviar Solicitud</button>
 
-  </form>
-
-</div>
+</form>

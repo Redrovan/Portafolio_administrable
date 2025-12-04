@@ -56,6 +56,8 @@ export class ScheduleAppointmentComponent {
     const a = {
       programmerId: this.programmerId,
       userId: this.user.uid,
+      userEmail:this.user.email,
+      userPhone:"+593982544829",
       date: this.appointment.date,
       time: this.appointment.time,
       reason: this.appointment.reason,

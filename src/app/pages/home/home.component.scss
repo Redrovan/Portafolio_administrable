@@ -1,86 +1,42 @@
-.home-container {
-  padding: 20px;
+.header {
+  text-align: center;
+  margin-bottom: 40px;
 
-  .title {
-    text-align: center;
-    font-size: 32px;
-    margin-bottom: 6px;
+  h1 {
+    font-size: 36px;
+    margin-bottom: 8px;
   }
 
   .subtitle {
-    text-align: center;
-    color: #777;
-    margin-bottom: 35px;
+    font-size: 18px;
+    color: #94a3b8;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+.cards {
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  margin-top: 20px;
+}
+
+.programmer {
+  text-align: center;
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--color-primary);
+    object-fit: cover;
+    margin-bottom: 10px;
   }
 
-  .cards {
-    display: grid;
-    gap: 25px;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  }
-
-  .card {
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    text-align: center;
-    transition: .2s ease;
-
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-
-    .avatar {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      margin-bottom: 15px;
-      object-fit: cover;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 22px;
-    }
-
-    .speciality {
-      color: #555;
-      margin: 4px 0 10px;
-      font-style: italic;
-    }
-
-    .bio {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 18px;
-      height: 40px;
-      overflow: hidden;
-    }
-
-    .buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-
-      .btn-view {
-        background: #1c7ed6;
-        color: white;
-        padding: 10px;
-        border-radius: 8px;
-        border: none;
-        cursor: pointer;
-      }
-
-      .btn-schedule {
-        background: #0ca678;
-        color: white;
-        padding: 10px;
-        border-radius: 8px;
-        border: none;
-        cursor: pointer;
-      }
-    }
+  .speciality {
+    color: var(--color-secondary);
+    margin-bottom: 15px;
+    font-weight: bold;
   }
 }

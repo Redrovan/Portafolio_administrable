@@ -1,41 +1,27 @@
-.admin-dashboard {
+h1 {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #94a3b8;
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 270px;
+  cursor: pointer;
+  transition: 0.2s;
   padding: 20px;
 
-  h1 {
-    font-size: 32px;
-  }
-
-  .subtitle {
-    color: #666;
-    margin-bottom: 30px;
-  }
-
-  .cards {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-  }
-
-  .card {
-    background: #fff;
-    padding: 25px;
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    width: 260px;
-    cursor: pointer;
-    transition: .2s;
-
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    }
-
-    h2 {
-      margin: 0 0 8px;
-    }
-
-    p {
-      color: #666;
-    }
+  &:hover {
+    transform: translateY(-6px);
+    background: rgba(255,255,255,0.09);
   }
 }

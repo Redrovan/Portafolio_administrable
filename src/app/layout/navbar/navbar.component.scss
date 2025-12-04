@@ -1,78 +1,65 @@
 .navbar {
   width: 100%;
   height: 70px;
-  background: rgba(255,255,255,0.10);
+
+  background: rgba(255,255,255,0.05);
   backdrop-filter: blur(10px);
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 20px;
+  padding: 0 22px;
   border-bottom: 1px solid rgba(255,255,255,0.15);
 
   position: sticky;
   top: 0;
   z-index: 100;
 
-  a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 20px;
-    font-weight: 500;
-
-    &.active {
-      border-bottom: 2px solid #4dabf7;
-    }
-
-    &:hover {
-      color: #4dabf7;
-    }
-  }
-
   .logo {
     font-size: 24px;
     font-weight: bold;
-    color: #4dabf7;
+    color: var(--color-primary);
+    text-decoration: none;
   }
 
-  .middle {
-    display: flex;
-    align-items: center;
+  .middle a {
+    color: var(--color-text);
+    margin: 0 10px;
+    text-decoration: none;
+    padding-bottom: 3px;
+    font-weight: 500;
+    transition: 0.2s;
+
+    &.active {
+      border-bottom: 2px solid var(--color-primary);
+    }
+
+    &:hover {
+      color: var(--color-primary);
+    }
   }
 
   .right {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
 
     .avatar {
       width: 38px;
       height: 38px;
       border-radius: 50%;
-      border: 2px solid #4dabf7;
+      border: 2px solid var(--color-primary);
+      object-fit: cover;
     }
 
     .name {
-      color: #fff;
+      font-weight: 600;
+      color: var(--color-text);
     }
 
-    .btn-login {
-      background: #4dabf7;
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .btn-logout {
-      background: #d6336c;
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      cursor: pointer;
+    .logout-btn {
+      padding: 6px 14px;
     }
   }
 }

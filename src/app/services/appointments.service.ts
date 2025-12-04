@@ -1,38 +1,28 @@
-// src/app/services/appointments.service.ts
-
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, updateDoc, deleteDoc, doc, query, where } from '@angular/fire/firestore';
-import { Appointment } from '../models/appointment.model';
-import { collectionData } from 'rxfire/firestore';
+import { Firestore, collection, addDoc, collectionData, query, where, doc, updateDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AppointmentsService {
-  private ref;
 
-  constructor(private db: Firestore) {
-    this.ref = collection(this.db, 'appointments');
+  constructor(private firestore: Firestore) {}
+
+  // Usuario crea asesoría
+  addAppointment(data: any) {
+    const ref = collection(this.firestore, 'appointments');
+    return addDoc(ref, data);
   }
 
-  getAppointmentsByProgrammer(programmerId: string): Observable<Appointment[]> {
-    const q = query(this.ref, where('programmerId', '==', programmerId));
-    return collectionData(q, { idField: 'id' }) as Observable<Appointment[]>;
+  // Programador revisa sus citas
+  getAppointmentsByProgrammer(programmerId: string): Observable<any[]> {
+    const ref = collection(this.firestore, 'appointments');
+    const q = query(ref, where('programmerId', '==', programmerId));
+    return collectionData(q, { idField: 'id' }) as Observable<any[]>;
   }
 
-  getAppointmentsByUser(userId: string): Observable<Appointment[]> {
-    const q = query(this.ref, where('userId', '==', userId));
-    return collectionData(q, { idField: 'id' }) as Observable<Appointment[]>;
-  }
-
-  addAppointment(a: Appointment) {
-    return addDoc(this.ref, a);
-  }
-
-  updateAppointment(id: string, data: Partial<Appointment>) {
-    return updateDoc(doc(this.db, 'appointments', id), data);
-  }
-
-  deleteAppointment(id: string) {
-    return deleteDoc(doc(this.db, 'appointments', id));
+  // Programador actualiza el estado (aprobada/rechazada)
+  updateAppointment(id: string, data: any) {
+    const ref = doc(this.firestore, 'appointments', id);
+    return updateDoc(ref, data);
   }
 }

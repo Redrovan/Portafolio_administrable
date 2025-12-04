@@ -1,35 +1,34 @@
-<div class="container">
+<button class="back-btn" routerLink="/programmer/dashboard">← Regresar</button>
 
-  <h1>Solicitudes de Asesoría</h1>
+<h1>Solicitudes de Asesoría</h1>
 
-  <div class="list">
-    <div class="card" *ngFor="let a of appointments">
+<div class="list">
 
-      <h3>{{ a.date }} - {{ a.time }}</h3>
+  <div class="card-default item" *ngFor="let a of appointments">
 
-      <p><strong>Usuario:</strong> {{ a.userId }}</p>
-      <p><strong>Motivo:</strong> {{ a.reason }}</p>
+    <h3>{{ a.date }} — {{ a.time }}</h3>
 
-      <p class="status" [ngClass]="a.status">
-        Estado: {{ a.status }}
-      </p>
+    <p><strong>Usuario:</strong> {{ a.userId }}</p>
+    <p><strong>Motivo:</strong> {{ a.reason }}</p>
 
-      <div class="buttons" *ngIf="a.status === 'pendiente'">
-        <button class="approve" (click)="updateStatus(a, 'aprobada')">
-          Aprobar
-        </button>
+    <p [ngClass]="{
+      'status-pendiente': a.status === 'pendiente',
+      'status-aprobada': a.status === 'aprobada',
+      'status-rechazada': a.status === 'rechazada'
+    }">
+      Estado: {{ a.status }}
+    </p>
 
-        <button class="reject" (click)="updateStatus(a, 'rechazada')">
-          Rechazar
-        </button>
-      </div>
-
-      <div *ngIf="a.status !== 'pendiente'" class="response">
-        <strong>Mensaje enviado:</strong>
-        <p>{{ a.responseMessage }}</p>
-      </div>
-
+    <div *ngIf="a.status === 'pendiente'" class="buttons">
+      <button class="btn-success" (click)="updateStatus(a, 'aprobada')">Aprobar</button>
+      <button class="btn-danger" (click)="updateStatus(a, 'rechazada')">Rechazar</button>
     </div>
+
+    <div *ngIf="a.status !== 'pendiente'" class="response">
+      <strong>Mensaje enviado:</strong>
+      <p>{{ a.responseMessage }}</p>
+    </div>
+
   </div>
 
 </div>

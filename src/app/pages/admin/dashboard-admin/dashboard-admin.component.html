@@ -1,20 +1,18 @@
-<div class="admin-dashboard">
+<button class="back-btn" routerLink="/">← Regresar</button>
 
-  <h1>Panel del Administrador</h1>
-  <p class="subtitle">Gestiona usuarios programadores y disponibilidades</p>
+<h1>Panel del Administrador</h1>
+<p class="subtitle">Gestiona programadores y horarios</p>
 
-  <div class="cards">
+<div class="cards">
 
-    <div class="card" (click)="go('/admin/programmers')">
-      <h2>Programadores</h2>
-      <p>Registrar, editar o eliminar programadores</p>
-    </div>
+  <div class="card-default card" (click)="go('/admin/programmers')">
+    <h2>Programadores</h2>
+    <p>Registrar, editar y listar programadores</p>
+  </div>
 
-    <div class="card" (click)="go('/admin/availability')">
-      <h2>Disponibilidad</h2>
-      <p>Administrar horarios de los programadores</p>
-    </div>
-
+  <div class="card-default card" (click)="go('/admin/availability')">
+    <h2>Disponibilidad</h2>
+    <p>Administrar los horarios de los programadores</p>
   </div>
 
 </div>
