@@ -10,7 +10,7 @@ export class EmailService {
   //backend = "http://localhost:3000";
 
   // Para producción (Render):
-  backend = "https://backend-portafolio-2wbm.onrender.com"; //  cambia esto por tu URL de Render
+  backend = "https://portafolio-administrable.onrender.com"; //  cambia esto por tu URL de Render
 
   constructor(private http: HttpClient) {}
 
